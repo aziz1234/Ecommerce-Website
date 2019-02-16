@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-    <h2>${user.getuserName()} Operation performed successfully</h2>
+    <h2>Operation performed successfully</h2>
 </body>
 </html>
