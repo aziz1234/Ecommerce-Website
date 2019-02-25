@@ -23,17 +23,28 @@ public class Userinfo {
 	private boolean enabled;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<Authorities> authorities = new ArrayList<>();
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "userInfo")
+	private List<Cart> cart = new ArrayList<>();
 	
 
 	public Userinfo(){}
 	
-	public Userinfo(String userName, String emailId, String password, boolean enabled, List<Authorities> authorities) {
+	public Userinfo(String userName, String emailId, String password, boolean enabled, List<Authorities> authorities, List<Cart> cart) {
 		super();
 		this.enabled = enabled;
 		this.userName= userName;
 		this.emailId = emailId;
 		this.password= password;
 		this.authorities = authorities;
+		this.cart = cart;
+	}
+
+	public List<Cart> getCart() {
+		return cart;
+	}
+
+	public void setCart(List<Cart> cart) {
+		this.cart = cart;
 	}
 
 	public boolean isEnabled() {

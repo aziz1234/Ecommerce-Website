@@ -91,5 +91,7 @@ public class RegistrationController {
         model.addAttribute ("products",products);
         return "newhomepage";
       }
+	
+	
 
 }

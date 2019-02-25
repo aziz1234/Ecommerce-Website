@@ -15,11 +15,17 @@ $(function() {
 		e.preventDefault();
 	});
 	
-/*	$('#password, #confirm-password').on('keyup', function () {
+	/*$('#password, #confirm-password').on('keyup', function () {
 		  if ($('#password').val() == $('#confirm-password').val()) {
 		    $('#message').html('Matching').css('color', 'green');
 		  } else 
 		    $('#message').html('Not Matching').css('color', 'red');
 		}); */
+	
+	$(document).ready(function() {
+	    function disableBack() { window.history.forward() }
 
+	    window.onload = disableBack();
+	    window.onpageshow = function(evt) { if (evt.persisted) disableBack() }
+	});
 });

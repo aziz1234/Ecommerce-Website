@@ -1,9 +1,14 @@
 package model.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
@@ -24,10 +29,12 @@ public class Products {
 	@Min(value = 1, message = " Quantity should be greater than zero and positive")
 	@Max(value= 99, message = " Quantity limit exceeded, value should be less than 100")
 	private int productQty;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "userInfo")
+	private List<Cart> cart = new ArrayList<>();
 	
 	public Products() {}
 	
-	public Products(int productId, String productName, double unitPrice, String productDescription, String category, int productQty) {
+	public Products(int productId, String productName, double unitPrice, String productDescription, String category, int productQty, List<Cart> cart) {
 		super();
 		this.productQty = productQty;
 		this.productId = productId;
@@ -35,6 +42,15 @@ public class Products {
 		this.unitPrice = unitPrice;
 		this.productDescription = productDescription;
 		this.category = category;
+		this.cart = cart;
+	}
+
+	public List<Cart> getCart() {
+		return cart;
+	}
+
+	public void setCart(List<Cart> cart) {
+		this.cart = cart;
 	}
 
 	public int getProductQty() {

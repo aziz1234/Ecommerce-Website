@@ -80,7 +80,7 @@
                   </h4>
                   <h5>&#x20b9; <c:out value="${products.unitPrice}" /></h5>
                   <a href="${pageContext.request.contextPath}/viewproduct?productId=${products.productId}" class="btn btn-primary">More</a>
-                  <a href="#" class="btn btn-secondary">Add to Cart</a>
+                  <a href="${pageContext.request.contextPath}/addcartitem?productId=${products.productId}" class="btn btn-secondary">Add to Cart</a>
                 </div>
               </div>
             </div>

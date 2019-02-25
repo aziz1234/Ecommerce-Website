@@ -12,7 +12,9 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="<%= request.getContextPath() %>/resources/js/login.js"></script>
+<script type="text/javascript" src="<%= request.getContextPath() %>/resources/js/validation.js"></script>
 <link rel ="stylesheet" href="<%= request.getContextPath() %>/resources/css/login.css">
+
 </head>
 <body>
 <!-- Navigation -->
