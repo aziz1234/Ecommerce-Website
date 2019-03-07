@@ -66,4 +66,22 @@ public class CartDAOImpl implements ICartDAO{
 		
 		
 	}
+	
+	public boolean deleteCartItem(int cartId) {
+		
+		
+		boolean b = true;
+		try
+		{
+			sess.beginTransaction();
+			Cart c = (Cart)sess.load(Cart.class, new Integer(cartId));
+			sess.delete(c);
+			sess.getTransaction().commit();
+		}catch(Exception ex)
+		{
+			sess.getTransaction().rollback();
+			b = false;
+		}
+		return b;
+}
 }

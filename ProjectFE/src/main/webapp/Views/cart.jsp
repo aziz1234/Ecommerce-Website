@@ -13,6 +13,7 @@
 <title>Cart</title>
  <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/homepage.css">
  <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/cart.css">
 <script src="<%= request.getContextPath() %>/resources/js/bootstrap.min.css"></script>
 <script src="<%= request.getContextPath() %>/resources/jquery/jquery.min.js"></script>
@@ -38,7 +39,7 @@
                 <a class="dropdown-item" href="#">Catagory 3</a>
              </div>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="${pageContext.request.contextPath}/newhomepage">Home
                 <span class="sr-only">(current)</span>
               </a>
@@ -90,7 +91,7 @@
 							<td data-th="Subtotal" class="text-center">&#x20b9; <c:out value="${products.product.unitPrice}" /></td>
 							<td class="actions" data-th="">
 								<button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-								<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
+								<a class="btn btn-danger btn-sm" href="${pageContext.request.contextPath}/deletecartitem?cartId=${products.cartId}"><i class="fa fa-trash-o"></i></a>								
 							</td>
 						</tr>
 					</tbody>

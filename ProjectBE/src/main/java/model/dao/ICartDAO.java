@@ -9,4 +9,5 @@ public interface ICartDAO {
 
 	public boolean addCartItem(Cart c);
 	public List<Products> getCartForUser(String userName);
+	public boolean deleteCartItem(int cartId);
 }

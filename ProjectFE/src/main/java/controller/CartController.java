@@ -50,7 +50,7 @@ public class CartController {
    
     	
         if(b) 
-         return "success";
+         return "cart";
         else 
             return "newhomepage";
 
@@ -66,4 +66,15 @@ public class CartController {
         return "cart";
 
 }
+    
+    @GetMapping(value = "/deletecartitem")
+    public String deleteCartItem(@RequestParam(value = "cartId") String cartId, @ModelAttribute("Cart")Cart c) {
+    	ICartDAO ic = new CartDAOImpl();
+    	boolean b = ic.deleteCartItem(Integer.parseInt(cartId));
+		if(b)
+			return "cart";
+		else
+			return "cart";
+    	
+    }
 }   
