@@ -31,7 +31,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Website Name</a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/newhomepage">Website Name</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -42,27 +42,27 @@
                Shop by Catagories
               </a>
              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                 <a class="dropdown-item" href="${pageContext.request.contextPath}/productsbycategory?category=smart watch">Catagory 1</a>
-                <a class="dropdown-item" href="#">Catagory 2</a>
+                 <a class="dropdown-item" href="${pageContext.request.contextPath}/productsbycategory?category=Electronics">Electronics</a>
+                <a class="dropdown-item" href="${pageContext.request.contextPath}/productsbycategory?category=Books">Books</a>
                 <a class="dropdown-item" href="#">Catagory 3</a>
              </div>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home
+              <a class="nav-link" href="${pageContext.request.contextPath}/newhomepage">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="${pageContext.request.contextPath}/registration">Login &amp; Signup</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/showcart">Cart</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
+              <a class="nav-link" href="#">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/logout">Sign Out</a>
             </li>
           </ul>
         </div>
@@ -139,7 +139,7 @@
         <c:forEach items="${products}" var="products">
            <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
-                <a href="${pageContext.request.contextPath}/viewproduct?productId=${products.productId}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <a href="${pageContext.request.contextPath}/resources/images/${products.productId}.jpg"><img height="350" width="100" class="card-img-top" src="${pageContext.request.contextPath}/resources/images/${products.productId}.jpg" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a href="${pageContext.request.contextPath}/viewproduct?productId=${products.productId}"><c:out value="${products.productName}" /></a>

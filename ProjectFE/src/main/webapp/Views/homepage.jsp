@@ -16,9 +16,6 @@
    <security:authorize access="hasAnyRole('ROLE_ADMIN')">
    <a href="${pageContext.request.contextPath}/manageproducts"> Click here to manage products</a>
   </security:authorize>
-   <a href="${pageContext.request.contextPath}/listproducts"> Click here to list products</a>
-   <a href="${pageContext.request.contextPath}/delete"> Click here to delete products</a>
-   <a href="${pageContext.request.contextPath}/updateproducts"> Click here to update products</a>
-   <a href="${pageContext.request.contextPath}/productsbycategory?category=smart watch"> Click here to list all smart watches</a>
+   <a href="${pageContext.request.contextPath}/showcart"> Click here to view cart</a>
 </body>
 </html>

@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -57,8 +58,20 @@ public class Cart {
 	private Userinfo userInfo;
 	
 	@ManyToOne
-	@JoinColumn(name = "PRODUCTID")
+	@JoinColumns({
+	    @JoinColumn(name="PRODUCTID", referencedColumnName="productId"),
+	    @JoinColumn(name="PRODUCTNAME", referencedColumnName="productName"),
+	    @JoinColumn(name="CATEGORY", referencedColumnName="category"),
+	    @JoinColumn(name="UNITPRICE", referencedColumnName=" unitPrice")
+	  })
 	private Products product;
+
+
+
+	@Override
+	public String toString() {
+		return "Cart [cartId=" + cartId + ", userInfo=" + userInfo + ", product=" + product + "]";
+	}
 	
 
 }

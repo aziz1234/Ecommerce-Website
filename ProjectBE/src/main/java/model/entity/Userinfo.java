@@ -87,6 +87,12 @@ public class Userinfo {
 		this.emailId = emailId;
 	}
 
+	@Override
+	public String toString() {
+		return "Userinfo [userName=" + userName + ", userId=" + userId + ", emailId=" + emailId + ", password="
+				+ password + ", enabled=" + enabled + ", authorities=" + authorities + ", cart=" + cart + "]";
+	}
+
 	public String getPassword() {
 		return password;
 	}

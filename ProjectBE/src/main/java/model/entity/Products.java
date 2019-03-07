@@ -1,5 +1,6 @@
 package model.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,9 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
 @Entity
-public class Products {
+public class Products implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int productId;
@@ -29,11 +32,18 @@ public class Products {
 	@Min(value = 1, message = " Quantity should be greater than zero and positive")
 	@Max(value= 99, message = " Quantity limit exceeded, value should be less than 100")
 	private int productQty;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "userInfo")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
 	private List<Cart> cart = new ArrayList<>();
 	
 	public Products() {}
 	
+	@Override
+	public String toString() {
+		return "Products [productId=" + productId + ", productName=" + productName + ", unitPrice=" + unitPrice
+				+ ", productDescription=" + productDescription + ", category=" + category + ", productQty=" + productQty
+				+ ", cart=" + cart + "]";
+	}
+
 	public Products(int productId, String productName, double unitPrice, String productDescription, String category, int productQty, List<Cart> cart) {
 		super();
 		this.productQty = productQty;

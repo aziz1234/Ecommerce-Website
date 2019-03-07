@@ -23,11 +23,11 @@
     <script src="<%= request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
     <script src="<%= request.getContextPath() %>/resources/js/bootstrap.min.js"></script>
   </head>
-<body>
+<body >
      <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Website Name</a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/newhomepage">Website Name</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -38,8 +38,8 @@
                Shop by Catagories
               </a>
              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                 <a class="dropdown-item" href="${pageContext.request.contextPath}/productsbycategory?category=smart watch">Catagory 1</a>
-                <a class="dropdown-item" href="#">Catagory 2</a>
+                 <a class="dropdown-item" href="${pageContext.request.contextPath}/productsbycategory?category=Electronics">Electronics</a>
+                <a class="dropdown-item" href="${pageContext.request.contextPath}/productsbycategory?category=Books">Books</a>
                 <a class="dropdown-item" href="#">Catagory 3</a>
              </div>
             </li>
@@ -49,16 +49,16 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="${pageContext.request.contextPath}/registration">Login &amp; Signup</a>
+               <a class="nav-link" href="${pageContext.request.contextPath}/showcart">Cart</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
+              <a class="nav-link" href="#">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/logout">Sign Out</a>
             </li>
           </ul>
         </div>
@@ -69,18 +69,27 @@
     
 <div class="container">
    <div class="row">
-    <div class="col">
-      <img src="http://placehold.it/700x900" alt="product image" class="img-thumbnail">
+    <div  class="col">
+      <img src="${pageContext.request.contextPath}/resources/images/${products.productId}.jpg" alt="product image" class="img-thumbnail">
     </div>
     <div class="col-8">    
-      <div class="row">
+      <div  style="padding-left: 8%" class="row">
       <h4><c:out value="${products.productName}" /></h4>
       </div>
       <div class="row">
-      <p><c:out value="${products.productDescription}" /></p>
+      <p style="padding: 50px"><c:out value="${products.productDescription}" /></p>
       </div>
-      <div class="row">
-      <a href="#" class="btn btn-primary">Buy Now</a>
+      <div style="padding-left: 8%" class="row">
+      <h4 style="padding-left: 400px">M.R.P &#x20b9;<c:out value="${products.unitPrice}" /></h4>
+      </div>
+      <div style="padding: 3% 8%" class="row">
+      <a style="width: 120px" href="#" class="btn btn-primary">Buy Now</a>
+      </div>
+      <div style="padding: 0% 8%" class="row">
+      <a style="width: 120px"
+      		href="${pageContext.request.contextPath}/addcartitem?productId=${products.productId}&category=${products.category}&unitPrice=${products.unitPrice}&productName=${products.productName}"
+       		class="btn btn-primary">Add To Cart
+       </a>
       </div>
     </div>
  </div>   
