@@ -23,7 +23,7 @@
  <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/newhomepage">Website Name</a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/newhomepage">Loot</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -36,7 +36,7 @@
              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                  <a class="dropdown-item" href="${pageContext.request.contextPath}/productsbycategory?category=Electronics">Electronics</a>
                 <a class="dropdown-item" href="${pageContext.request.contextPath}/productsbycategory?category=Books">Books</a>
-                <a class="dropdown-item" href="#">Catagory 3</a>
+                
              </div>
             </li>
             <li class="nav-item">
@@ -44,14 +44,14 @@
                 <span class="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="${pageContext.request.contextPath}/showcart">Cart</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/contact">Contact</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="${pageContext.request.contextPath}/logout">Sign Out</a>
@@ -61,7 +61,7 @@
       </div>
     </nav>
     
-<div class="container">
+<div class="container" style="padding-bottom: 100px;">
 	<table id="cart" class="table table-hover table-condensed">
     				<thead>
 						<tr>
@@ -104,10 +104,17 @@
 							<td><a href="${pageContext.request.contextPath}/newhomepage" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
 							<td class="hidden-xs text-center"><strong></strong></td>
-							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+							<td><a href="${pageContext.request.contextPath}/checkout" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
 						</tr>
 					</tfoot>
 				</table>
 </div>
+
+<footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Loot 2019</p>
+      </div>
+      <!-- /.container -->
+    </footer>
 </body>
 </html>

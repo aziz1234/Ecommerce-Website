@@ -21,9 +21,6 @@ import model.entity.Userinfo;
 
 @Controller
 public class CartController {
-	@Autowired
-	
-	private ICartDAO iCartDAO;
 	
 	
 
@@ -38,6 +35,7 @@ public class CartController {
     		@RequestParam(value="productName")String productName,
             @ModelAttribute("Cart")Cart c, @ModelAttribute("User")Userinfo u, @ModelAttribute("Product")Products p) { 
         
+    	ICartDAO ic = new CartDAOImpl();
         boolean b;
         u.setUserName(getLoggedInUserName());
         p.setProductId(Integer.parseInt(productId));
@@ -46,7 +44,7 @@ public class CartController {
         p.setUnitPrice(Double.parseDouble(unitPrice));
         c.setProduct(p);
         c.setUserInfo(u);
-        b=this.iCartDAO.addCartItem(c);
+        b=ic.addCartItem(c);
    
     	
         if(b) 
@@ -60,9 +58,9 @@ public class CartController {
     @RequestMapping(value = "/showcart",  method = RequestMethod.GET)
     public String showCart(Model model) {
 
-        
+    	ICartDAO ic = new CartDAOImpl();
         /*List<Products> products =  this.iCartDAO.getCartForUser(getLoggedInUserName());*/
-        model.addAttribute("products",this.iCartDAO.getCartForUser(getLoggedInUserName()));
+        model.addAttribute("products",ic.getCartForUser(getLoggedInUserName()));
         return "cart";
 
 }
@@ -76,5 +74,13 @@ public class CartController {
 		else
 			return "cart";
     	
+    }
+    
+    @RequestMapping(value="/checkout", method=RequestMethod.GET)
+    public String checkOut(Model model) {
+    	ICartDAO ic = new CartDAOImpl();
+        /*List<Products> products =  this.iCartDAO.getCartForUser(getLoggedInUserName());*/
+        model.addAttribute("products",ic.getCartForUser(getLoggedInUserName()));
+    	return "checkout";
     }
 }   

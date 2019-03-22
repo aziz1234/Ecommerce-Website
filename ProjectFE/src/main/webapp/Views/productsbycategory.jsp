@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+    <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,6 +13,20 @@
     <meta name="author" content="">
 
     <title>Sort by Category</title>
+     <!-- Fontawesome  -->
+        <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/font-awesome.min.css">
+        
+        <!-- Animate CSS -->
+        <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/animate.css">
+        
+        <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/style.css">
+        
+       <!-- BX slider CSS -->
+        <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/jquery.bxslider.css">
+        
+        <!-- responsive css -->
+        <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/responsive.css"> 
+         
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css">
@@ -27,7 +43,7 @@
      <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/newhomepage">Website Name</a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/newhomepage">Loot</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -48,9 +64,17 @@
                 <span class="sr-only">(current)</span>
               </a>
             </li>
+            <security:authorize access="hasAnyRole('ROLE_USER')">
             <li class="nav-item">
-              <a class="nav-link" href="${pageContext.request.contextPath}/showcart">Cart</a>
+               <a class="nav-link" href="${pageContext.request.contextPath}/showcart">Cart</a>
             </li>
+            </security:authorize>
+            <security:authorize access="hasAnyRole('ROLE_ADMIN')">
+            <li class="nav-item">
+              <a class="nav-link" href="${pageContext.request.contextPath}/manageproducts">Manage Products</a>
+            </li>
+            </security:authorize>
+            
             <li class="nav-item">
               <a class="nav-link" href="#">About</a>
             </li>
@@ -64,31 +88,51 @@
         </div>
       </div>
     </nav>
-<div class="container">    
+     
+          <section id="ABOUT">       
+            <div class="container">            
+                <div class="row">                
+                    <div class="col-md-10 col-md-offset-1">
+                   
+                        <!-- About us Title & Description -->
+                        <div class="section-title">                        
+                            <h2 style="padding-left: 145px;"> <c:out value="${Category}" /> </h2>					                        
+                        </div>                    
+                    </div>                
+                </div>            
+            </div>      
+       </section>
+      
+<div class="container" style="padding-bottom: 100px;">    
 <div class="col-lg">
 <div class="row">
-<h2><c:out value="${Category}" /></h2>
-<hr>
 </div>
 <div class="row">
-<c:forEach items="${products}" var="products">
-           <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="${pageContext.request.contextPath}/resources/images/${products.productId}.jpg" alt=""></a>
+          <c:forEach items="${products}" var="products">
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="${pageContext.request.contextPath}/resources/images/${products.productId}.jpg" alt="Card image cap" height="200px" width="80px">
                 <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="#"><c:out value="${products.productName}" /></a>
-                  </h4>
+                  <p class="card-text"><h5> <c:out value="${products.productName}" /></h5></p>
                   <h5>&#x20b9; <c:out value="${products.unitPrice}" /></h5>
-                  <a href="${pageContext.request.contextPath}/viewproduct?productId=${products.productId}" class="btn btn-primary">More</a>
-                  <a href="${pageContext.request.contextPath}/addcartitem?productId=${products.productId}&category=${products.category}&unitPrice=${products.unitPrice}&productName=${products.productName}" class="btn btn-secondary">Add to Cart</a>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="${pageContext.request.contextPath}/viewproduct?productId=${products.productId}" class="btn btn-sm btn-outline-primary">More</a>
+                      <a href="${pageContext.request.contextPath}/addcartitem?productId=${products.productId}&category=${products.category}&unitPrice=${products.unitPrice}&productName=${products.productName}" class="btn btn-sm btn-outline-success">Add to Cart</a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </c:forEach>
+            </c:forEach>
 </div>            
 </div>
 </div>
-
+<footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Loot 2019</p>
+      </div>
+      <!-- /.container -->
+    </footer>
 </body>
 </html>

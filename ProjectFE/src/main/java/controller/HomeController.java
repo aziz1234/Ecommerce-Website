@@ -13,4 +13,13 @@ public class HomeController {
 		return "homepage"; 
 	}
 	
+	@RequestMapping(value="/contact", method=RequestMethod.GET)
+	public String contact() {
+		return "contact";
+	}
+	
+	@RequestMapping(value="/about", method=RequestMethod.GET)
+	public String about() {
+		return "aboutus";
+	}
 }

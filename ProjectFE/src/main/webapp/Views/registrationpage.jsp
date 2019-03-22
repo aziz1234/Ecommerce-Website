@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+    <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +22,7 @@
 <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/newhomepage">Website Name</a>
+        <a class="navbar-brand" href="#">Loot</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -48,14 +50,12 @@
               <a class="nav-link" href="${pageContext.request.contextPath}/registration">Login &amp; Signup</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/contact">Contact</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
+            
           </ul>
         </div>
       </div>
@@ -64,13 +64,13 @@
     
     <br>
     <br>
-<div class="container">
+<div class="container" style="padding-bottom: 150px;">
     	<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 				<div class="panel panel-login">
 					<div class="panel-heading">
 						<div class="row">
-							<div class="col-xs-6">
+							<div class="col-xs-6" style="padding-left: 90px; padding-right: 100px;">
 								<a href="#" class="active" id="login-form-link">Login</a>
 							</div>
 							<div class="col-xs-6">
@@ -138,5 +138,11 @@
 			</div>
 		</div>
 	</div>
+	<footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Loot 2019</p>
+      </div>
+      <!-- /.container -->
+    </footer>
 </body>
 </html>

@@ -25,9 +25,5 @@ public class MvcSpringWebConfig implements WebMvcConfigurer {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
 	
-	@Bean
-	public ICartDAO iCartDAO() {
-		return new CartDAOImpl();
-		
-	}
+	
 }

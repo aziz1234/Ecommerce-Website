@@ -51,10 +51,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		permitAll().
 		antMatchers("/").
 				 hasAnyRole("ADMIN","USER"). 
-				 antMatchers("/manageproducts").access("hasRole('ROLE_ADMIN')"). 
+				 antMatchers("/manageproducts").access("hasRole('ROLE_ADMIN')").
+				 antMatchers("/showcart").access("hasRole('ROLE_USER')").
 		and().
 			formLogin().loginPage("/login").
-			defaultSuccessUrl("/").
+			defaultSuccessUrl("/newhomepage").
 			failureUrl("/login?error=true").
 			permitAll().
 		and().
