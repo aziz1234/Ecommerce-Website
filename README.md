@@ -16,6 +16,6 @@ BE Technologies used:
   .HQL/SQL
   
 DB used:
-  . H2 DB
+    H2 DB
   
   
